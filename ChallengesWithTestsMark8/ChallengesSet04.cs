@@ -44,22 +44,47 @@ namespace ChallengesWithTestsMark8
 
         public bool CouldFormTriangle(int sideLength1, int sideLength2, int sideLength3)
         {
-            throw new NotImplementedException();
+            
+            if(sideLength1 + sideLength2 > sideLength3 && sideLength1 + sideLength3 > sideLength2 && sideLength3 + sideLength2 > sideLength1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool IsStringANumber(string input)
         {
-            throw new NotImplementedException();
+            double i;
+            bool result = double.TryParse(input,out i);
+            return result;
         }
 
         public bool MajorityOfElementsInArrayAreNull(object[] objs)
         {
-            throw new NotImplementedException();
+            int nullCount = 0;
+            foreach(var obj in objs)
+            {
+                if(obj == null)
+                {
+                    nullCount++;
+                }
+            }
+            if(nullCount > objs.Length / 2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public double AverageEvens(int[] numbers)
         {
-            var Evens = new List<int>();
+            var Evens = new List<double>();
             if (numbers != null)
             {
                 foreach (var num in numbers)
@@ -69,13 +94,14 @@ namespace ChallengesWithTestsMark8
                         Evens.Add(num);
                     }
                 }
-                double average = Evens.Sum() / Evens.Count;
+                
                 if(Evens.Count <= 0)
                 {
                     return 0;
                 }
                 else
                 {
+                    double average = Evens.Sum() / Evens.Count;
                     return average;
                 }
             }
@@ -88,7 +114,20 @@ namespace ChallengesWithTestsMark8
 
         public int Factorial(int number)
         {
-            throw new NotImplementedException();
+           
+            if (number >= 0)
+            {
+                int fact = 1;
+                for (int i = 1; i <= number; i++)
+                {
+                    fact *= i;
+                }
+                return fact;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("cannot be negative");
+            }
         }
     }
 }
