@@ -74,19 +74,31 @@ namespace ChallengesWithTestsMark8
 
         public string TurnWordsIntoSentence(string[] words)
         {
-            if(words != null && words.Length > 0)
+            if(words != null && words.Length > 1)
             {
 
+                var newWords = new List<string>();
                 foreach (var str in words)
                 {
-                    var charsToRemove = new string[] { " " };
-                    foreach (var c in charsToRemove)
+                    newWords.Add(str.Trim());
+                }
+                var answer = new List<string>();
+                foreach (var item in newWords)
+                {
+                    if (item.Length > 0)
                     {
-                       str.Replace(c, string.Empty);
+                        answer.Add(item);
                     }
                 }
-                return $"{String.Join(" ", words)}.";
-                
+                if (words[0].Length > 1)
+                {
+                    return $"{String.Join(" ", answer)}.";
+                }
+                else
+                {
+                    return "";
+                }
+
             }
             else
             {
