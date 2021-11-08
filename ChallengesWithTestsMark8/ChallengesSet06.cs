@@ -102,7 +102,28 @@ namespace ChallengesWithTestsMark8
 
         public int MaxConsecutiveCount(int[] numbers)
         {
-            throw new NotImplementedException();
+            var count = 0;
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                var secondCount = 1;
+                for (int j = i + 1; j < numbers.Length; j++)
+                {
+                    if (numbers[i] == numbers[j])
+                    {
+                        secondCount++;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                
+                    if (secondCount > count)
+                    {
+                        count = secondCount;
+                    }
+            }
+            return count;
         }
 
         public double[] GetEveryNthElement(List<double> elements, int n)
